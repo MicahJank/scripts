@@ -84,7 +84,7 @@ async function crawl_script() {
     const rootHref= rootUrl.href.replace(/\/$/, '')
     await page.goto(rootHref)
     visited.add(rootHref)
-    await page.waitFor(300)
+    await new Promise(resolve => setTimeout(resolve, 300))
     const pageContent = await page.content()
 
     /**
@@ -120,7 +120,7 @@ async function crawl_script() {
       const link = q.dequeue()
       await page.goto(link)
       visited.add(link)
-      await page.waitFor(300)
+      await new Promise(resolve => setTimeout(resolve, 300))
       const pageContent = await page.content()
       const $ = cheerio.load(pageContent)
       const links = []

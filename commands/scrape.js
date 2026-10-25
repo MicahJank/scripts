@@ -50,7 +50,7 @@ async function scrollToPageBottom(page) {
     );
 
     // Wait for 2 seconds.
-    await page.waitFor(2000);
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
     // Get current scrollHeight.
     const totalScrollHeight = await page.evaluate(() => {

@@ -39,7 +39,7 @@ async function perf({ url, filter }={}) {
     await page.goto(targetURL)
     
     // Get performance metrics.
-    await page.waitFor(1000)
+    await new Promise(resolve => setTimeout(resolve, 1000))
     const result = await page._client.send('Performance.getMetrics')
     const performanceMetrics = result.metrics.reduce((obj, x) => {
       obj[x.name] = x.value
